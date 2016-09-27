@@ -18,7 +18,7 @@ base_length = 25;
 dvoltage = dscan ./1024 .*5;
 v = [404 560 445 326 250 210 173 150 134 124 113 104 91 82 75] ./1024 .*5;
 x = 10:10:150;
-ddistance = interp1(v, x, dvoltage, 'linear') + 2;
+ddistance = interp1(v, x, dvoltage, 'linear');
 a = find(ddistance>base_length + 6);
 ddistance(a) = NaN;
 
