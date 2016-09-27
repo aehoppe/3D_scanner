@@ -4,6 +4,7 @@ Servo turn_servo;
 boolean input_complete = true;
 String input = "";
 const byte delay_length = 15;
+const byte num_samples = 3;
 
 void setup() {
   // put your setup code here, to run once:
@@ -41,7 +42,7 @@ void scan_line(int turn) {
     tilt_servo.write(90 + tilt);
     if (tilt == 30) delay(300);
     delay(delay_length);
-    Serial.print(String(analogRead(0)) + ", ");
+    Serial.print(String(scan_point()) + ", ");
   }
   Serial.println();
 }
@@ -55,3 +56,14 @@ void serialEvent() {
     }
   }
 }
+
+float scan_point() {
+  long sum = 0;
+  for(byte i = 0; i < num_samples; i++) {
+    sum += analogRead(0);
+    delay(delay_length);
+  }
+  float avg = sum / num_samples;
+  return avg;
+}
+
