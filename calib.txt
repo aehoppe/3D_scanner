@@ -1,0 +1,19 @@
+>> voltage_to_distance(284)
+
+ans =
+
+   47.5263  (actually 46)
+
+>> voltage_to_distance(202)
+
+ans =
+
+   64.1622 (actually 65)
+
+>> voltage_to_distance(120)
+
+ans =
+
+  105.6364 (right on)
+
+>> 
